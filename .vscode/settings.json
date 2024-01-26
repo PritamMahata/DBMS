@@ -2,16 +2,16 @@
     "sqltools.connections": [
         {
             "mysqlOptions": {
-                "authProtocol": "xprotocol",
+                "authProtocol": "default",
                 "enableSsl": "Disabled"
             },
             "previewLimit": 50,
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "firstSQLConnection",
-            "database": "myshop",
-            "username": "admin",
+            "name": "test",
+            "database": "college",
+            "username": "root",
             "password": "@pritam123"
         }
     ]

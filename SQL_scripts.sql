@@ -7,5 +7,6 @@ create table dept(
   name varchar(50),
   age int not null
 );
-# select * from dept;
-# drop table dept;
+INSERT INTO dept VALUES(1, 'John', 20);
+select * from dept;
+drop table dept;
