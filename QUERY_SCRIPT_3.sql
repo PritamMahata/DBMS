@@ -33,29 +33,26 @@ ORDER BY ENAME;
 -- Write a query, which will return the DAY of the week (i.e.
 -- MONDAY), for any date entered in the format: DD.MM.YY
 
-SELECT TO_CHAR(TO_DATE('&ANY DATE', 'DD.MM.YY'), 'DAY')
-           DAY
-FROM SYS.DUAL;
+SELECT TO_CHAR(TO_DATE('&ANY DATE', 'DD.MM.YY'), 'DAY') DAY FROM SYS.DUAL;
 
 
 -- Write a query to calculate the length of time any employee has been with the company.
 -- Use DEFINE to avoid repetitive typing of functions.
 
--- Not fix yet
-DEFINE &TIME = MONTH_BETWEEN(SYSDATE,HIRDATE);
+-- !!!!! Not fix yet !!!!!
+DEFINE &EMPLOYEE_NAME = KING;
+SELECT ENAME,
+       FLOOR(MONTHS_BETWEEN(SYSDATE, HIREDATE) / 12) || ' YEARS ' ||
+       FLOOR(MOD(MONTHS_BETWEEN(SYSDATE, HIREDATE), 12)) || ' MONTHS' AS "LENGTH OF SERVICE"
+FROM EMP WHERE ENAME=UPPER(&EMPLOYEE_NAME);
 
-SELECT ENAME, FLOOR(&TIME/12)||' YEARS '||
-FLOOR(MOD(&TIME,12))||' MONTHS' "LENGTH OF SERVICE"
-FROM EMP WHERE ENAME=UPPER('&EMPLOYEE_NAME');
 
 -- Given a string of the format 'nn / nn', verify that the first and last 2
 -- characters are numbers, and that the middle character is a '/'.
 -- Print the expression 'YES' if valid, 'NO' if not valid. Use the following
 -- values to test your solution '12/24', '01/1a', and '99\88'.
 
-SELECT '12/34'                                                                  VALUE,
-       DECODE(TRANSLATE('12/
-34', '1234567890', '9999999999'), '99/99', 'YES', 'NO') "VALID?"
+SELECT '12/34' VALUE, DECODE(TRANSLATE('12/34', '1234567890', '9999999999'), '99/99', 'YES', 'NO') "VALID?"
 FROM SYS.DUAL;  -- inside the "SYS" schema "DUAL" table is empty
 
 
