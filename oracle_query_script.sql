@@ -3,7 +3,7 @@ SELECT * FROM EMP;
 
 -- List all employees who have a salary between 1000 to 2000
 SELECT ENAME, DEPTNO, SAL FROM EMP WHERE SAL
-BETWEEN 100 AND 2000;
+BETWEEN 1000 AND 2000;
 
 --List department numbers and names in department name order.
 SELECT DEPTNO, DNAME FROM DEPT ORDER BY DNAME;
