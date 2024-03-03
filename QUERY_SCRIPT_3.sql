@@ -3,7 +3,7 @@
 -- expression otherwise the formatted column will wrap;
 -- it uses a width of 80 characters is the default for character columns.
 
-SELECT ENAME , TO_CHAR(HIREDATE,'fmMonth, Ddspth YYYY') AS date_hired
+SELECT ENAME, TO_CHAR(HIREDATE, 'fmMonth, Ddspth YYYY') AS date_hired
 FROM EMP
 WHERE DEPTNO = 20;
 
@@ -24,8 +24,8 @@ from EMP;
 -- Print list of employees displaying just salary that more than1500.
 -- if exactly 1500 display 'On Target', if less than 1500 display 'below 1500'
 SELECT ENAME,
-       DECODE(SIGN(500 - SAL), 1, 'BELOW 1500', 0, 'On
-Target', SAL) SALARY
+       DECODE(SIGN(500 - SAL), 1, 'BELOW 1500', 0, 'On Target', SAL)
+           SALARY
 FROM EMP
 ORDER BY ENAME;
 
@@ -33,7 +33,8 @@ ORDER BY ENAME;
 -- Write a query, which will return the DAY of the week (i.e.
 -- MONDAY), for any date entered in the format: DD.MM.YY
 
-SELECT TO_CHAR(TO_DATE('&ANY DATE', 'DD.MM.YY'), 'DAY') DAY FROM SYS.DUAL;
+SELECT TO_CHAR(TO_DATE('&ANY DATE', 'DD.MM.YY'), 'DAY') DAY
+FROM SYS.DUAL;
 
 
 -- Write a query to calculate the length of time any employee has been with the company.
@@ -44,7 +45,8 @@ DEFINE &EMPLOYEE_NAME = KING;
 SELECT ENAME,
        FLOOR(MONTHS_BETWEEN(SYSDATE, HIREDATE) / 12) || ' YEARS ' ||
        FLOOR(MOD(MONTHS_BETWEEN(SYSDATE, HIREDATE), 12)) || ' MONTHS' AS "LENGTH OF SERVICE"
-FROM EMP WHERE ENAME=UPPER(&EMPLOYEE_NAME);
+FROM EMP
+WHERE ENAME = UPPER(&EMPLOYEE_NAME);
 
 
 -- Given a string of the format 'nn / nn', verify that the first and last 2
@@ -53,8 +55,8 @@ FROM EMP WHERE ENAME=UPPER(&EMPLOYEE_NAME);
 -- values to test your solution '12/24', '01/1a', and '99\88'.
 
 SELECT '12/34' VALUE, DECODE(TRANSLATE('12/34', '1234567890', '9999999999'), '99/99', 'YES', 'NO') "VALID?"
-FROM SYS.DUAL;  -- inside the "SYS" schema "DUAL" table is empty
-
+FROM SYS.DUAL;
+-- inside the "SYS" schema "DUAL" table is empty
 
 
 -- Employees hired on or before the 15th of any month are paid on the last Friday of that month.
@@ -67,6 +69,7 @@ FROM EMP
 ORDER BY HIREDATE;
 
 
-
--- List all employees names, and their average salary group by their
--- respective department.
+-- List all employees names, and their average salary group by their respective department.
+SELECT  DEPTNO,ENAME,ROUND(AVG(SAL),2) AS SAL
+FROM EMP
+GROUP BY DEPTNO, ENAME;
