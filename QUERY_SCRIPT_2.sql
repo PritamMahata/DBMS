@@ -4,7 +4,7 @@
 -- Run the query a number of the difference.
 
 SELECT ENAME, HIREDATE FROM EMP WHERE HIREDATE
-BETWEEN '01-01-1980' AND '01-01-1989';
+BETWEEN '01-JAN-1980' AND '01-NOV-1989';
 
 -- Develop a query that will accept a given job title.
 -- Execute the query a number of times to test.

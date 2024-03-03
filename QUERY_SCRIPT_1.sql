@@ -50,10 +50,10 @@ FROM EMP
 WHERE HIREDATE LIKE '%87%';
 
 -- Display name, annual salary and commission of all sales people
--- whose monthly salary is greater than their commission. The output
--- should be ordered by salary , highest first. If two or more
--- employees have the same salary sort by employee name, within the
--- highest salary order.
+-- whose monthly salary is greater than their commission.
+-- The output should be ordered by salary , highest first.
+-- If two or more employees have the same salary sort by employee name,
+-- within the highest salary order.
 SELECT ENAME, SAL * 12 ANNUAL_SAL, COMM
 FROM EMP
 WHERE SAL > COMM
